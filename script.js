@@ -1,4 +1,4 @@
-// ===== UI制御部 =====
+
 document.getElementById("submitBtn").addEventListener("click", function() {
 
     const inputValue = document.getElementById("numberInput").value;
