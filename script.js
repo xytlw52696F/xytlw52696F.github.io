@@ -1,3 +1,15 @@
+// ===== UI制御部 =====
+document.getElementById("submitBtn").addEventListener("click", function() {
+
+    const inputValue = document.getElementById("numberInput").value;
+    const parsedValue = parseInt(inputValue);
+    const result = hanshinBraker(parsedValue);
+
+    document.getElementById("result").textContent = result;
+});
+
+
+
 class ExprNode {
   constructor(val) {
     this.val = val;
