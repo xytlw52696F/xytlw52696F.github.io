@@ -270,6 +270,6 @@ function hanshinBraker(n) {
     tree.partitionHandler();
     exprStack.initStack();
     tree.formExpr(exprStack);
-    console.log(n + " = " + exprStack.peek());
+    return exprStack.peek());
     
 }
