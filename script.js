@@ -261,16 +261,3 @@ function hanshinBraker(n) {
     console.log(n + " = " + exprStack.peek());
     
 }
-
-hanshinBraker(1);
-
-// ===== UI制御部 =====
-document.getElementById("submitBtn").addEventListener("click", function() {
-
-    const inputValue = document.getElementById("numberInput").value;
-    const parsedValue = parseInt(inputValue);
-
-    const result = processInteger(parsedValue);
-
-    document.getElementById("result").textContent = result;
-});
