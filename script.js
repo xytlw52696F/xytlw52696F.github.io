@@ -1,14 +1,28 @@
+document.getElementById("submitBtn").addEventListener("click", function () {
 
-document.getElementById("submitBtn").addEventListener("click", function() {
+    const inputValue = document.getElementById("numberInput").value.trim();
 
-    const inputValue = document.getElementById("numberInput").value;
-    const parsedValue = parseInt(inputValue);
-    if(parsedValue > 2147483647){
-        console.log(the number is too large.);
+    // 数字のみかチェック（正規表現）
+    if (!/^[0-9]+$/.test(inputValue)) {
+        alert("format error");
         return;
     }
-    const result = hanshinBraker(parsedValue);
 
+    const parsedValue = Number(inputValue);
+
+    // 1以上かチェック
+    if (parsedValue < 0) {
+        alert("input natural number");
+        return;
+    }
+
+    // 最大値チェック
+    if (parsedValue > 2147483647) {
+        alert("the number is too large.");
+        return;
+    }
+
+    const result = hanshinBraker(parsedValue);
     document.getElementById("result").textContent = result;
 });
 
