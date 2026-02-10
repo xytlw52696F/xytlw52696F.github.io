@@ -73,7 +73,8 @@ class ExprNode {
     if (this.right) this.right.formExpr(exprStack);
 
     if (this.isLeaf) {
-      exprStack.push(String(this.val));
+      if(this.val > 0) exprStack.push(String(this.val));
+      else exprStack.push("(" + String(this.val) + ")");
       return;
     }
 
