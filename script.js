@@ -3,6 +3,9 @@ document.getElementById("submitBtn").addEventListener("click", function() {
 
     const inputValue = document.getElementById("numberInput").value;
     const parsedValue = parseInt(inputValue);
+    if(parsedValue > 2147483647){
+        return the number is too large.
+    }
     const result = hanshinBraker(parsedValue);
 
     document.getElementById("result").textContent = result;
@@ -270,6 +273,6 @@ function hanshinBraker(n) {
     tree.partitionHandler();
     exprStack.initStack();
     tree.formExpr(exprStack);
-    return exprStack.peek();
+    return n + "=" + exprStack.peek();
     
 }
