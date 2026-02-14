@@ -142,6 +142,7 @@ class ExprNode {
     if (val < 0) {
         this.op = 21;
         this.right = new ExprNode(-val);
+        return this.right.partitionHandler();
     }
 
     // --- base cases ---
