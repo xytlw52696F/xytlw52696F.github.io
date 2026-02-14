@@ -252,8 +252,8 @@ class ExprNode {
       this.right = new ExprNode(this.val - left);
     }
 
-    this.left.partitionHandler();
-    this.right.partitionHandler();
+    if(!this.left) this.left.partitionHandler();
+    if(!this.right) this.right.partitionHandler();
   }
 }
 
