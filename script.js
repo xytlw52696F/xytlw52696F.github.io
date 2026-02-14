@@ -6,9 +6,17 @@ document.getElementById("submitBtn").addEventListener("click", function () {
     if (!/^-?[0-9]+$/.test(inputValue)) {
         alert("format error");
         return;
-    }
-
+    }    
     const parsedValue = Number(inputValue);
+    if(parsedValue > MAX_SAFE_INTEGER){
+        alert("this number is too large.");
+        return;
+    }   
+
+    if(parsedValue < MIN_SAFE_INTEGER){
+        alert("this number is too small.");
+        return;
+    }   
     const result = hanshinBraker(parsedValue);
     document.getElementById("result").textContent = result;
 });
@@ -38,6 +46,8 @@ class ExprNode {
     }
     return false;
   }
+
+  
 
   formExpr(exprStack) {
     if (this.left) this.left.formExpr(exprStack);
@@ -144,8 +154,19 @@ class ExprNode {
         this.right = new ExprNode(-val);
         return this.right.partitionHandler();
     }
-
+    
     // --- base cases ---
+    if (val === 334334){
+      this.op = 4;
+      this.left = new ExprNode(334);
+      this.right = new ExprNode(334);
+
+      this.left.setNode(4,4);
+      this.right.setNode(4,4);
+      
+      return;
+
+    }
     if (val === 334) return this.setNode(4, 4);
     if (val === 132) return this.setNode(4, 2);
     if (val === 102) return this.setNode(2, 4);
@@ -231,8 +252,13 @@ class ExprNode {
       return;
     }
 
+
+    if (val > 334){
+        return this.productPartition();
+    }
+
     // --- recursive cases ---
-    const tryMul = [334,132,102,37,36,29,24,21,15,13,10,9,5,4,3,2];
+    const tryMul = [334334,334,132,102,37,36,29,24,21,15,13,10,9,5,4,3,2];
     for (const k of tryMul) {
       if (val % k === 0) {
         this.multiplyNode(k);
@@ -255,7 +281,20 @@ class ExprNode {
     if(!this.left) this.left.partitionHandler();
     if(!this.right) this.right.partitionHandler();
   }
+
+  productPartition(){
+      val = this.val;
+      if(val> 334334){
+          rem = val%334334;
+          this.addPartition(val - rem);
+     }else if(val > 334){
+          rem = val%334;
+          this.addPartition(val - rem);
+     }
+
+  }
 }
+
 
 
 class Stack {
