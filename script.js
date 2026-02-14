@@ -3,25 +3,12 @@ document.getElementById("submitBtn").addEventListener("click", function () {
     const inputValue = document.getElementById("numberInput").value.trim();
 
     // 数字のみかチェック（正規表現）
-    if (!/^[0-9]+$/.test(inputValue)) {
+    if (!/^-?[0-9]+$/.test(inputValue)) {
         alert("format error");
         return;
     }
 
     const parsedValue = Number(inputValue);
-
-    // 1以上かチェック
-    if (parsedValue < 0) {
-        alert("input natural number");
-        return;
-    }
-
-    // 最大値チェック
-    if (parsedValue > 2147483647) {
-        alert("the number is too large.");
-        return;
-    }
-
     const result = hanshinBraker(parsedValue);
     document.getElementById("result").textContent = result;
 });
@@ -35,22 +22,6 @@ class ExprNode {
     this.op = -1;
     this.left = null;
     this.right = null;
-  }
-
-  printTree() {
-    if (this.left) this.left.printTree();
-    if (this.right) this.right.printTree();
-
-    if (this.isLeaf) {
-      process.stdout.write(this.val + " ");
-    } else {
-      const op = this.op;
-      if (op === 0 || op === 10) process.stdout.write("+ ");
-      else if (op === 1 || op === 11) process.stdout.write("- ");
-      else if (op === 2) process.stdout.write("* ");
-      else if (op === 3) process.stdout.write("/ ");
-      else if (op === 4) process.stdout.write("~ ");
-    }
   }
 
   numCheck(s) {
@@ -124,6 +95,12 @@ class ExprNode {
       case 11:
         exprStack.push("(" + leftVal + "-" + rightVal + ")");
         break;
+            
+      case 21:
+        exprStack.push("-(" + rightVal + ")");
+        break;
+
+      
     }
   }
 
@@ -161,6 +138,11 @@ class ExprNode {
 
   partitionHandler() {
     const val = this.val;
+
+    if (val < 0) {
+        this.op = 21;
+        this.right = new ExprNode(-val);
+    }
 
     // --- base cases ---
     if (val === 334) return this.setNode(4, 4);
@@ -284,8 +266,10 @@ class Stack {
 }
 
 function hanshinBraker(n) {
+    
     const exprStack = new Stack();
     let tree = new ExprNode(n);
+    
     tree.partitionHandler();
     exprStack.initStack();
     tree.formExpr(exprStack);
