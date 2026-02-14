@@ -8,12 +8,12 @@ document.getElementById("submitBtn").addEventListener("click", function () {
         return;
     }    
     const parsedValue = Number(inputValue);
-    if(parsedValue > MAX_SAFE_INTEGER){
+    if(parsedValue > 9007199254740991){
         alert("this number is too large.");
         return;
     }   
 
-    if(parsedValue < MIN_SAFE_INTEGER){
+    if(parsedValue < -9007199254740991){
         alert("this number is too small.");
         return;
     }   
