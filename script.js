@@ -278,18 +278,21 @@ class ExprNode {
       this.right = new ExprNode(this.val - left);
     }
 
-    if(!this.left) this.left.partitionHandler();
-    if(!this.right) this.right.partitionHandler();
+    this.left.partitionHandler();
+    this.right.partitionHandler();
   }
 
   productPartition(){
-      val = this.val;
-      if(val> 334334){
-          rem = val%334334;
-          this.addPartition(val - rem);
-     }else if(val > 334){
-          rem = val%334;
-          this.addPartition(val - rem);
+    let val = this.val;
+      
+    if(val > 334334){
+          const rem = val%334334;
+          if(rem!=0) this.addPartition(val - rem);
+          else this.multiplyNode(334334);
+     }else if(val > 334 && val < 334335){
+          const rem = val%334;
+          if(rem!=0) this.addPartition(val - rem);
+          else this.multiplyNode(334);
      }
 
   }
