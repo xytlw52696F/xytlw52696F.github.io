@@ -289,10 +289,14 @@ class ExprNode {
           const rem = val%334334;
           if(rem!=0) this.addPartition(val - rem);
           else this.multiplyNode(334334);
-     }else if(val > 334 && val < 334335){
+     }else if(val > 334){
           const rem = val%334;
           if(rem!=0) this.addPartition(val - rem);
           else this.multiplyNode(334);
+     }else if(val > 29){
+          const rem = val%29;
+          if(rem!=0) this.addPartition(val - rem);
+          else this.multiplyNode(29);
      }
 
   }
