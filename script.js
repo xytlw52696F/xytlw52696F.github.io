@@ -253,7 +253,7 @@ class ExprNode {
     }
 
 
-    if (val > 334){
+    if (val > 29){
         return this.productPartition();
     }
 
@@ -293,6 +293,18 @@ class ExprNode {
           const rem = val%334;
           if(rem!=0) this.addPartition(val - rem);
           else this.multiplyNode(334);
+     }else if(val > 132){
+          const rem = val%132;
+          if(rem!=0) this.addPartition(val - rem);
+          else this.multiplyNode(132);
+     }else if(val > 102){
+          const rem = val%102;
+          if(rem!=0) this.addPartition(val - rem);
+          else this.multiplyNode(102);
+     }else if(val > 37){
+          const rem = val%37;
+          if(rem!=0) this.addPartition(val - rem);
+          else this.multiplyNode(37);
      }else if(val > 29){
           const rem = val%29;
           if(rem!=0) this.addPartition(val - rem);
