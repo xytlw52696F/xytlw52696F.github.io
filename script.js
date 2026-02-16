@@ -252,11 +252,6 @@ class ExprNode {
       return;
     }
 
-
-    if (val > 29){
-        return this.productPartition();
-    }
-
     // --- recursive cases ---
     const tryMul = [334334,334,132,102,37,36,29,24,21,15,13,10,9,5,4,3,2];
     for (const k of tryMul) {
@@ -264,6 +259,10 @@ class ExprNode {
         this.multiplyNode(k);
         return;
       }
+    }
+
+    if (val > 29){
+        return this.productPartition();
     }
 
     const r = Math.floor(Math.random() * (val / 2)) + 1;
