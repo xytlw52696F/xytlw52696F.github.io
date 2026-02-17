@@ -253,10 +253,10 @@ class ExprNode {
     }
 
     // --- recursive cases ---
-    const tryMul = [334334,334,132,102,37,36,29,24,21,15,13,10,9,5,4,3,2];
-    for (const k of tryMul) {
-      if (val % k === 0) {
-        this.multiplyNode(k);
+    const factor = [334334,334,132,102,37,36,29,24,21,15,13,10,9,5,4,3,2];
+    for (const f of factor) {
+      if (val % f === 0) {
+        this.multiplyNode(f);
         return;
       }
     }
@@ -271,7 +271,6 @@ class ExprNode {
 
   addPartition(left) {
     this.op = 0;
-
     if (!this.left && !this.right) {
       this.left = new ExprNode(left);
       this.right = new ExprNode(this.val - left);
