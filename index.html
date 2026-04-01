@@ -6,18 +6,65 @@
 </head>
 <body>
 
-<h2>整数を3,3,4だけで表します</h2>
-  <div id="container">
-    <input type="number" id="numberInput" />
-    <button id="submitBtn">分解する</button>
+<h1>3引数等式ジェネレータ</h1>
+<h2>入力した整数を,３つの数からなる式に分解します</h2>
 
+  <div id="container">
+    <select id="inputArg1">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3" selected>3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    </select>
+
+    <select id="inputArg2">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3" selected>3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    </select>
+
+    <select id="inputArg3">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4" selected>4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    </select>
+    ←ここに式の要素となる3数を入力  
+    <br>
+
+    ↓ここに分解したい整数を入力  <br>
+    <input type="number" id="numberInput" />
+    <button id="submitBtn">分解する</button>←ここを押して分解
+    
+
+    <br>
+    
+    <h2>出力結果</h2>
     <div id="resultBox">
     <span id="result"></span>
     </div>
     
   </div>
   
-<script src= "https://xytlw52696f.github.io/script.js" ></script>
+<script src= "meta.js" ></script>
 
 <style>
 body{
@@ -38,7 +85,7 @@ body{
     border-radius: 6px;
     background-color:#111111;
     color: #f9f9f9;
-    font-family: "Meiryo", serif;
+    font-family: "Courier", monospace;
     font-size: 18px;
     display: block;
 
